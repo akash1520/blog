@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped&family=Noto+Sans&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #CAF0F8;
+    /* color scheme: https://colorhunt.co/palette/03045e00b4d890e0efcaf0f8 */
+}
+
+html{
+    overflow: scroll;
+}
+form{
+    text-align: center;
+}
+
+#logo {
+    image-resolution: 300dpi;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    transition: all 0.5s ease-in;
+}
+
+#logo:hover {
+    cursor: pointer;
+    box-shadow: 0.08rem 0.09rem 0.08rem 0.09rem #F38181;
+}
+
+li,
+a,
+button {
+    font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: rgba(43, 25, 25, 0.486);
+    text-decoration: none;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #90E0EF;
+    align-items: center;
+    padding: 2% 8%;
+}
+
+nav {
+    background-color: #90E0EF;
+}
+
+
+.nav_links li {
+    transition: all .3s ease 0s;
+    list-style: none;
+    flex-direction: row;
+    float: left;
+    margin-right: 1rem;
+    padding: .75rem .75rem;
+    background-color: #90E0EF;
+    border-radius: 50%;
+
+}
+
+.nav_links li a {
+    font-family: "IBM Plex Sans Thai Looped";
+    background-color: inherit;
+    color: #03045E;
+    font-weight: bold;
+}
+
+.nav_links>ul>li:hover {
+    font-weight: bolder;
+    background-color: #7ad0df;
+}
+
+
+button {
+    width: 3rem;
+    height: 3rem;
+    background-color: rgba(38, 165, 238, 0.479);
+    border: solid 2px black;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .2s ease 0s;
+}
+
+button:hover {
+    box-shadow: .06rem .06rem .05rem .07rem rgba(212, 114, 208, 0.76);
+    color: rgba(212, 114, 208, 0.76);
+    border: dashed 1px black;
+}
+
+
+
+/* extra css */
+
+.content {
+    font-family:"IBM Plex Sans Thai Looped";
+    padding: 1% 8%;
+}
+
+.home h1 {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+
+
+/* titles */
+
+.titles {
+    display: inline-block;
+    position: relative;
+    color: #03045E;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.titles:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.titles:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+/*footer */
+footer {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    color: #0087ca;
+    font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+    text-align: center;
+}
+
+footer div {
+    padding: 2rem 1rem;
+    background-color: black;
+}
+
+
+
+.form-control{
+    margin-left: 25%;
+    width: 50%;
+}
+
+
+
+/* footer */
+
+footer a {
+    background-color: inherit;
+    color: #90E0EF;
+}

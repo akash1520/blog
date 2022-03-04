@@ -1,0 +1,20 @@
+<%- include("partials/header")-%>
+
+<div class="home content">
+    <h1 class="titles">HOME</h1>
+    <p><b>This is a blog website. Still working on this but I have made decent progress and it's working fine.
+            I can add blogs by going to "compose" page which is hidden, as I don't want anyone to be able to post
+            anything without my wish (I haven't learn how to manage users data yet so once I learn that, I'll make
+            proper login system.)
+        </b>
+    </p>
+</div>
+
+<% blog.forEach(e=>{ %>
+<div class="content">
+    <h1 class="titles"><%= e.topic %></h1>
+    <p><b><%= e.blog.slice(0,100) %> ... </b><a href="/posts/<%= e.topic %> "><b>Read More</b></a></p>
+</div>
+<% }) %>
+
+<%- include("partials/footer")-%>
