@@ -3,10 +3,10 @@ const http = require("http")
 const _ = require('lodash')
 const bodyParser = require('body-parser')
 const ejs = require('ejs')
-const req = require('express/lib/request')
-const {
-    response
-} = require('express')
+const { default: mongoose } = require('mongoose')
+
+mongoose.connect("mongodb+srv://admin-akash:Test123@cluster0.o03fl.mongodb.net/blogDB");
+
 
 const app = express()
 app.set('view engine', 'ejs')
