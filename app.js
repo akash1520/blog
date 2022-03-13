@@ -3,7 +3,7 @@ const http = require("http")
 const _ = require('lodash')
 const bodyParser = require('body-parser')
 const ejs = require('ejs')
-const { default: mongoose } = require('mongoose')
+const mongoose = require('mongoose')
 
 mongoose.connect("mongodb+srv://admin-akash:Test123@cluster0.o03fl.mongodb.net/blogDB");
 
@@ -15,28 +15,48 @@ app.use(bodyParser.urlencoded({
     extended: true
 }))
 
-let psts = [{
+const postSchema = new mongoose.Schema({
+    topic:String,
+    blog:String
+})
+
+const Post = mongoose.model("post",postSchema);
+
+const psts =new Post({
     topic: "Akash",
     blog: "Looking forward to creating a full fledged blog website, where you will be able to post blogs as a user and there will be some system to rate the blogs."
-}]
+})
+psts.save()
 
 
 app.get(["/", "/home"], (req, res) => {
 
-    res.render('home', {
-        blog: psts
+    Post.find({},(err,foundBlogs)=>{
+        res.render('home', {
+            blog: foundBlogs
+        })
     })
+
+    
+    
 })
 
 
 app.post("/compose", (req, res) => {
 
-    let pst = {
+    const anything = new Post({
         topic: req.body.title,
         blog: req.body.blog
-    }
-    psts.push(pst);
-    res.redirect("/")
+    })
+    anything.save(function(err){
+
+        if (!err){
+     
+          res.redirect("/");
+     
+        }
+     
+      });
 })
 
 app.get("/:page", (req, res) => {
@@ -46,14 +66,18 @@ app.get("/:page", (req, res) => {
 
 
 app.get("/posts/:post", (req, res) => {
-    for (let i = 0; i < psts.length; i++) {
-        if (_.lowerCase(req.params.post) === _.lowerCase(psts[i].topic)) {
-            res.render('posts', {
-                e: psts[i]
-            })
-            break
+
+    Post.find({},(err,foundBlogs)=>{
+        for (let i = 0; i < foundBlogs.length; i++) {
+            if (_.lowerCase(req.params.post) === _.lowerCase(foundBlogs[i].topic)) {
+                res.render('posts', {
+                    e: foundBlogs[i]
+                })
+                break;
+            }
         }
-    }
+    })
+    
 
 })
 
